@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import { AppDataSource } from "./config/data-source";
 import * as dotenv from "dotenv";
@@ -8,8 +8,8 @@ dotenv.config();
 
 const PORT: number = Number(process.env.PORT);
 
-const app = express();
-app.use(cors());
+const app: Express = express();
+app.use(cors({ origin: "*" }));
 app.use(express.json()); //Parse JSON Request Bodies
 app.use(express.urlencoded({ extended: true })); //Parse URL-encoded Data, parse nested objects
 
